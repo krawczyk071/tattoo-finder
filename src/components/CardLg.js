@@ -1,18 +1,18 @@
 import React from "react";
 
-const CardLg = () => {
+const CardLg = ({ tatObj }) => {
   return (
-    <div class="card-lg">
-      <div class="card-lg__photo">
-        <img src="./img/2.jpg" alt="" />
+    <div className="card-lg">
+      <div className="card-lg__photo">
+        <img src={`./img/${tatObj.url}.jpg`} alt="" />
       </div>
-      <div class="card-lg__info">
+      <div className="card-lg__info">
         <h1>Name</h1>
         <h2>Votes: 234</h2>
-        <div class="card-lg__fav">
-          <i class="fa-solid fa-heart"></i>
+        <div className="card-lg__fav">
+          <i className="fa-solid fa-heart"></i>
         </div>
-        <button class="btn">Order</button>
+        <button className="btn">Order</button>
       </div>
     </div>
   );

@@ -1,21 +1,28 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div class="header">
-      <nav class="navbar shadow-sm">
-        <div class="navbar__logo">
+    <div className="header">
+      <nav className="navbar shadow-sm">
+        <div className="navbar__logo">
           <span>Tattoo</span>finder
         </div>
-        <ul class="navbar__list">
-          <li class="navbar__item">
-            <a href="#">Home</a>
+        <ul className="navbar__list">
+          <li className="navbar__item">
+            <Link to="/">Home</Link>
           </li>
-          <li class="navbar__item">Favorites</li>
-          <li class="navbar__item">Vote</li>
-          <li class="navbar__item">Book Session</li>
+          <li className="navbar__item">
+            <Link to="/favorites">Favorites</Link>
+          </li>
+          <li className="navbar__item">
+            <Link to="/vote">Vote</Link>
+          </li>
+          <li className="navbar__item">
+            <Link to="/book">Book Session</Link>
+          </li>
         </ul>
-        <button class="btn btn__primary shadow-sm">Login</button>
+        <button className="btn btn__primary shadow-sm">Login</button>
       </nav>
     </div>
   );

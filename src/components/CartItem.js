@@ -2,13 +2,13 @@ import React from "react";
 
 const CartItem = () => {
   return (
-    <div class="cart__item">
-      <div class="cart__photo">
+    <div className="cart__item">
+      <div className="cart__photo">
         <img src="./img/2.jpg" alt="" />
       </div>
-      <input type="text" placeholder="Size" class="ipt cart__size" />
+      <input type="text" placeholder="Size" className="ipt cart__size" />
       <h2>12$</h2>
-      <i class="fa-regular fa-circle-xmark"></i>
+      <i className="fa-regular fa-circle-xmark"></i>
     </div>
   );
 };
