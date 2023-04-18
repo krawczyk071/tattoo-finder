@@ -1,8 +1,13 @@
 import React from "react";
-
 import CardSm from "../components/CardSm";
-
 import CardXl from "../components/CardXl";
+import { imgnames, x, json32, pics, pics2 } from "../utils/data";
+
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
 
 const Vote = () => {
   return (
