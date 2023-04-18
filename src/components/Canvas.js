@@ -3,23 +3,23 @@ import CardSm from "./CardSm";
 import Modal from "./Modal";
 
 const Canvas = ({ tats }) => {
-  const modalInit = { url: "", open: false };
+  const modalInit = { tat: {}, open: false };
   const [modal, setModal] = useState(modalInit);
 
-  function close() {
+  function closer() {
     setModal(modalInit);
   }
 
-  function showModal(url) {
-    setModal({ url, open: true });
+  function showModal(tat) {
+    setModal({ tat, open: true });
   }
 
   const tatCards = tats.map((tat) => (
-    <CardSm key={tat} imgurl={tat} showModal={() => showModal(tat)} />
+    <CardSm key={tat.id} tat={tat} showModal={() => showModal(tat)} />
   ));
   return (
     <>
-      <Modal modal={modal} close={close} />
+      <Modal modal={modal} closer={closer} />
       <div className="canvas">{tatCards}</div>
     </>
   );

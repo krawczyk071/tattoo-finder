@@ -383,9 +383,11 @@ body {
 }
 .card-sm__info {
   display: grid;
+  height: 100%;
+  align-content: space-between;
   margin-top: 0.3rem;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 90% 1fr;
+  grid-template-rows: auto auto;
 }
 .card-sm__fav {
   grid-area: 1/2 / span 2/2;
@@ -446,7 +448,16 @@ body {
 .card-lg__info .btn {
   align-self: center;
 }
-
+.card-lg h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.tag {
+  background: silver;
+  padding: 0.2rem;
+  border-radius: var(--radius1);
+  margin: 0 4px;
+}
 .vote {
   display: flex;
   flex-direction: column;
@@ -596,4 +607,39 @@ body {
   justify-content: center;
   margin: 1rem 0;
   /* height: 150px; */
+}
+.never {
+  background: rgb(255, 81, 0);
+  color: white;
+  border-radius: var(--radius1);
+  padding: 1rem;
+  margin: 3rem;
+  text-align: center;
+}
+.never i {
+  font-size: 2rem;
+}
+.card-lg__info__stat {
+  display: flex;
+  justify-content: space-between;
+}
+.card-lg__info__tags {
+  display: flex;
+  flex-direction: column;
+  background: wheat;
+  padding: 0.3rem;
+  margin: 1rem 0;
+}
+.card-lg__info__tags__cont {
+  padding: 0.3rem;
+}
+.card-lg__info__price {
+  flex: 1;
+  align-self: center;
+  justify-content: end;
+}
+.card-lg__fav {
+  align-self: center;
+  font-size: 4rem;
+  margin: 3rem;
 }

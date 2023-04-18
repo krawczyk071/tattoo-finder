@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import CardLg from "../components/CardLg";
 import Canvas from "../components/Canvas";
 
-import { pics } from "../utils/data";
+import { tatData } from "../utils/data";
+import { ArrShuffle } from "../utils/helpers";
 const Homepage = () => {
-  const [tats, setTats] = useState(pics);
+  const [tats, setTats] = useState(ArrShuffle(tatData));
   return (
     <section className="layout-lg">
       <Canvas tats={tats} />
