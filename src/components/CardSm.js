@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { FavContext } from "../context/FavContext";
 
 const CardSm = ({ tat, showModal }) => {
   const [favorites, dispatch] = useContext(FavContext);
+
   return (
     <div className="card-sm">
       <div className="card-sm__wrap">

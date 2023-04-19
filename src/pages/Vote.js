@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CardSm from "../components/CardSm";
 import CardXl from "../components/CardXl";
 import { TatContext } from "../context/TatContext";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const Vote = () => {
   const [tats, dispatch] = useContext(TatContext);
@@ -34,11 +35,15 @@ const Vote = () => {
   return (
     <div className="vote">
       <div className="vote__card" onClick={() => nextCard()}>
-        <CardXl
-          tat={tats[cardIdx]}
-          dispatch={dispatch}
-          yours={[yoursUp, yoursDown]}
-        />
+        <TransitionGroup className="trans-group">
+          <CSSTransition classNames="slide" timeout={300} key={cardIdx}>
+            <CardXl
+              tat={tats[cardIdx]}
+              dispatch={dispatch}
+              yours={[yoursUp, yoursDown]}
+            />
+          </CSSTransition>
+        </TransitionGroup>
       </div>
       <div className="vote__top">
         <h1>Your top3:</h1>

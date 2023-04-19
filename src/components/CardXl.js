@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const CardXl = ({ tat, dispatch, yours }) => {
   const [yoursUp, yoursDown] = yours;
+
   return (
     <div className="card-xl">
-      <img src={`./img/${tat.img}.jpg`} alt="" />
+      <div className="card-xl__img">
+        <img src={`./img/${tat.img}.jpg`} alt="" />
+      </div>
       <div className="card-xl__yesno">
         <div
           className="card-xl__no"
