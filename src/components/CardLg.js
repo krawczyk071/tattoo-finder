@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { formatPrice } from "../utils/helpers";
+import { FavContext } from "../context/FavContext";
 
 const CardLg = ({ tat }) => {
+  const [favorites, dispatch] = useContext(FavContext);
+
   return (
     <div className="card-lg">
       <div className="card-lg__photo">
@@ -31,8 +34,21 @@ const CardLg = ({ tat }) => {
             Never Ordered before <i className="fa-solid fa-hand-fist"></i>
           </div>
         )}
-        <div className="card-lg__fav">
-          <i className="fa-solid fa-heart"></i>
+        <div
+          className="card-lg__fav"
+          onClick={(e) => {
+            e.stopPropagation();
+            dispatch({
+              type: "TOGG_FAVORITE",
+              payload: { tat: tat.id },
+            });
+          }}
+        >
+          {favorites.find((f) => f.id === tat.id)?.favorited ? (
+            <i className="fa-solid fa-heart"></i>
+          ) : (
+            <i className="fa-regular fa-heart"></i>
+          )}
         </div>
       </div>
     </div>

@@ -153,7 +153,7 @@ export const tatData = [
     price: "3699",
     author: "Marti Lia",
     votes: "70",
-    id: "346149",
+    id: "346148",
   },
   {
     img: "smoking_skull_wearing_bucket_hat",

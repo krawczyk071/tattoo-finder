@@ -520,6 +520,10 @@ body {
   background: silver;
   height: 300px;
 }
+.person__cal img {
+  height: 100%;
+  width: 300px;
+}
 .person__choice {
   flex: 1 1 60%;
 
