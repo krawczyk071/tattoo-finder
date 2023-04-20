@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { FavContext } from "../context/FavContext";
 
-const CardSm = ({ tat, showModal }) => {
+const CardSm = ({ tat, showModal, bg }) => {
   const [favorites, dispatch] = useContext(FavContext);
 
   return (
-    <div className="card-sm">
+    <div className="card-sm" style={{ background: bg }}>
       <div className="card-sm__wrap">
         <img src={`./img/${tat.img}.jpg`} alt="" />
         <div className="card-sm__more" onClick={showModal}>

@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="footer__box">
-        <div className="footer__logo">Logo</div>
+        <div className="footer__logo">Tattoo-finder</div>
         <p>Szymon © 2023</p>
         <p>Privacy Policy | Refund Policy</p>
       </div>

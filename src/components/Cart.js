@@ -30,7 +30,7 @@ const Cart = () => {
         <CartItem item={c} dispatch={dispatch} />
       ))}
       <h1>TOTAL:</h1>
-      <h1>{formatPrice(total)}</h1>
+      <h2>{formatPrice(total)}</h2>
 
       <button className="btn" onClick={placeOrder}>
         {buttonText}

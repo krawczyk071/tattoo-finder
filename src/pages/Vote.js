@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import CardSm from "../components/CardSm";
 import CardXl from "../components/CardXl";
 import { TatContext } from "../context/TatContext";
@@ -8,7 +8,9 @@ const Vote = () => {
   const [tats, dispatch] = useContext(TatContext);
   const [cardIdx, setCardIdx] = useState(0);
   function nextCard() {
-    setCardIdx((prev) => prev + 1);
+    setCardIdx((prev) => {
+      return prev === tats.length - 1 ? 0 : prev + 1;
+    });
   }
   const [yours, setYours] = useState([]);
   function yoursUp(id) {
@@ -32,6 +34,7 @@ const Vote = () => {
     });
   }
 
+  console.log("idx", cardIdx);
   return (
     <div className="vote">
       <div className="vote__card" onClick={() => nextCard()}>
@@ -45,12 +48,30 @@ const Vote = () => {
           </CSSTransition>
         </TransitionGroup>
       </div>
-      <div className="vote__top">
+      {/* <div className="vote__top">
         <h1>Your top3:</h1>
         <div className="vote__cards">
           {yours.map((y) => (
             <CardSm tat={tats.find((t) => t.id === y.id)} />
           ))}
+        </div>
+      </div> */}
+      <div className="last5">
+        <h1>Last 5 votes</h1>
+        <div className="last5__cards">
+          {yours
+            .slice(-5)
+            .reverse()
+            .map((y) => {
+              return (
+                <div className="last5__card">
+                  <CardSm
+                    tat={tats.find((t) => t.id === y.id)}
+                    bg={y.votes > 0 ? "green" : "red"}
+                  />
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>

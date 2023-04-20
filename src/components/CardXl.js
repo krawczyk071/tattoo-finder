@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const CardXl = ({ tat, dispatch, yours }) => {
   const [yoursUp, yoursDown] = yours;
-
+  // console.log(tat);
   return (
     <div className="card-xl">
       <div className="card-xl__img">
