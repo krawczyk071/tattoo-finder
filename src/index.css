@@ -103,6 +103,15 @@ body {
   width: 100vw;
   height: 100vh;
 }
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+.container {
+  flex: 1;
+}
 
 .layout-lg {
   /* overflow: hidden; */
@@ -653,6 +662,12 @@ body {
   align-self: center;
   font-size: 4rem;
   margin: 3rem;
+}
+.card-lg__info__order {
+  align-self: center;
+}
+.card-lg__info__order__remove {
+  cursor: pointer;
 }
 
 .trans-group {

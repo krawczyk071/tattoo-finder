@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { formatPrice } from "../utils/helpers";
 import { FavContext } from "../context/FavContext";
+import { CartContext } from "../context/CartContext";
 
 const CardLg = ({ tat }) => {
-  const [favorites, dispatch] = useContext(FavContext);
+  const [favorites, dispatchF] = useContext(FavContext);
+  const [cart, dispatchC] = useContext(CartContext);
 
   return (
     <div className="card-lg">
@@ -28,7 +30,30 @@ const CardLg = ({ tat }) => {
         <h2 className="card-lg__info__price">
           price: {formatPrice(tat.price)}
         </h2>
-        <button className="btn">Order</button>
+        <div className="card-lg__info__order">
+          {cart.some((c) => c.id === tat.id) ? (
+            <div
+              className="card-lg__info__order__remove"
+              onClick={(e) => {
+                e.stopPropagation();
+                dispatchC({ type: "CART_REMOVE", payload: tat });
+              }}
+            >
+              <i className="fa-solid fa-cart-shopping"></i> Remove from Cart
+            </div>
+          ) : (
+            <button
+              className="btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                dispatchC({ type: "CART_ADD", payload: tat });
+              }}
+            >
+              Order
+            </button>
+          )}
+        </div>
+
         {tat.firstOrder && (
           <div className="never">
             Never Ordered before <i className="fa-solid fa-hand-fist"></i>
@@ -38,7 +63,7 @@ const CardLg = ({ tat }) => {
           className="card-lg__fav"
           onClick={(e) => {
             e.stopPropagation();
-            dispatch({
+            dispatchF({
               type: "TOGG_FAVORITE",
               payload: { tat: tat.id },
             });

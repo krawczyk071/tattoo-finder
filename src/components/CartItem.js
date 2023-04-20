@@ -1,14 +1,21 @@
 import React from "react";
+import { formatPrice } from "../utils/helpers";
 
-const CartItem = () => {
+const CartItem = ({ item, dispatch }) => {
   return (
     <div className="cart__item">
       <div className="cart__photo">
-        <img src="./img/2.jpg" alt="" />
+        <img src={`./img/${item.img}.jpg`} alt="" />
       </div>
-      <input type="text" placeholder="Size" className="ipt cart__size" />
-      <h2>12$</h2>
-      <i className="fa-regular fa-circle-xmark"></i>
+      <h2>{item.name}</h2>
+      <h2>{formatPrice(item.price)}</h2>
+
+      <div
+        className="cart__item__remove"
+        onClick={() => dispatch({ type: "CART_REMOVE", payload: item })}
+      >
+        <i className="fa-regular fa-circle-xmark"></i>
+      </div>
     </div>
   );
 };
