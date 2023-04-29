@@ -2,15 +2,25 @@ import React, { useContext } from "react";
 import { formatPrice } from "../utils/helpers";
 import { FavContext } from "../context/FavContext";
 import { CartContext } from "../context/CartContext";
+import { cld } from "../utils/cloudinary";
+import { AdvancedImage, placeholder } from "@cloudinary/react";
+import { fill } from "@cloudinary/url-gen/actions/resize";
 
 const CardLg = ({ tat }) => {
   const [favorites, dispatchF] = useContext(FavContext);
   const [cart, dispatchC] = useContext(CartContext);
 
+  const myImage = cld.image(tat.cid);
+  myImage.resize(fill().width(1000).height(1000));
+
   return (
     <div className="card-lg">
       <div className="card-lg__photo">
-        <img src={`./img/${tat.img}.jpg`} alt="" />
+        <AdvancedImage
+          cldImg={myImage}
+          plugins={[placeholder({ mode: "predominant-color" })]}
+        />
+        {/* <img src={`./img/${tat.img}.jpg`} alt="" /> */}
       </div>
       <div className="card-lg__info">
         <h1>{tat.name}</h1>

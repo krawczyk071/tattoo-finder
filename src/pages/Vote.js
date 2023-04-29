@@ -9,7 +9,7 @@ const Vote = () => {
   const [cardIdx, setCardIdx] = useState(0);
   function nextCard() {
     setCardIdx((prev) => {
-      return prev === tats.length - 1 ? 0 : prev + 1;
+      return prev === tats.data.length - 1 ? 0 : prev + 1;
     });
   }
   const [yours, setYours] = useState([]);
@@ -41,7 +41,7 @@ const Vote = () => {
         <TransitionGroup className="trans-group">
           <CSSTransition classNames="slide" timeout={300} key={cardIdx}>
             <CardXl
-              tat={tats[cardIdx]}
+              tat={tats.data[cardIdx]}
               dispatch={dispatch}
               yours={[yoursUp, yoursDown]}
             />
@@ -66,7 +66,7 @@ const Vote = () => {
               return (
                 <div className="last5__card">
                   <CardSm
-                    tat={tats.find((t) => t.id === y.id)}
+                    tat={tats.data.find((t) => t.id === y.id)}
                     bg={y.votes > 0 ? "green" : "red"}
                   />
                 </div>

@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { cld } from "../utils/cloudinary";
+
+import { AdvancedImage, placeholder } from "@cloudinary/react";
+import { fill } from "@cloudinary/url-gen/actions/resize";
 
 const CardXl = ({ tat, dispatch, yours }) => {
   const [yoursUp, yoursDown] = yours;
   // console.log(tat);
+  const myImage = cld.image(tat.cid);
+  myImage.resize(fill().width(100).height(100));
+
   return (
     <div className="card-xl">
       <div className="card-xl__img">
-        <img src={`./img/${tat.img}.jpg`} alt="" />
+        <AdvancedImage
+          cldImg={myImage}
+          plugins={[placeholder({ mode: "predominant-color" })]}
+        />
+        {/* <AdvancedImage cldImg={myImage} /> */}
+        {/* <img src={`./img/${tat.img}.jpg`} alt="" /> */}
       </div>
       <div className="card-xl__yesno">
         <div

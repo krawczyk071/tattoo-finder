@@ -16,7 +16,7 @@ const Favorites = () => {
   const [favTats, setFavTats] = useState(
     favorites
       .filter((f) => f.favorited)
-      .map((f) => tats.find((t) => t.id === f.id))
+      .map((f) => tats.data.find((t) => t.id === f.id))
   );
   return (
     <section className="layout-lg">
