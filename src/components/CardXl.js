@@ -41,7 +41,7 @@ const CardXl = ({ tat, dispatch, yours }) => {
           <i className="fa-regular fa-circle-check"></i>
         </div>
       </div>
-      <h1>{tat.votes}</h1>
+      {/* <h1>{tat.votes}</h1> */}
     </div>
   );
 };
