@@ -5,6 +5,8 @@ import { FavContext } from "../context/FavContext";
 import { AdvancedImage, lazyload, placeholder } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { cld } from "../utils/cloudinary";
+import { useDispatch, useSelector } from "react-redux";
+import { toggle } from "../redux/features/favortiesSlice";
 
 const CardSm = ({ tat, showModal, bg }) => {
   // Instantiate a CloudinaryImage object for the image
@@ -12,7 +14,9 @@ const CardSm = ({ tat, showModal, bg }) => {
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
   myImage.resize(fill().width(250).height(250));
 
-  const [favorites, dispatch] = useContext(FavContext);
+  // const [favorites, dispatch] = useContext(FavContext);
+  const favorites = useSelector((state) => state.favorites);
+  const dispatch = useDispatch();
 
   return (
     <div className="card-sm" style={{ background: bg }}>
@@ -30,15 +34,7 @@ const CardSm = ({ tat, showModal, bg }) => {
       <div className="card-sm__info">
         <h1>{tat.name}</h1>
         <h2>Votes: {tat.votes}</h2>
-        <div
-          className="card-sm__fav"
-          onClick={() =>
-            dispatch({
-              type: "TOGG_FAVORITE",
-              payload: { tat: tat.id },
-            })
-          }
-        >
+        <div className="card-sm__fav" onClick={() => dispatch(toggle(tat.id))}>
           {favorites.find((f) => f.id === tat.id)?.favorited ? (
             <i className="fa-solid fa-heart"></i>
           ) : (

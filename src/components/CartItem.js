@@ -1,5 +1,6 @@
 import React from "react";
 import { formatPrice } from "../utils/helpers";
+import { remove } from "../redux/features/cartSlice";
 
 const CartItem = ({ item, dispatch }) => {
   return (
@@ -12,7 +13,7 @@ const CartItem = ({ item, dispatch }) => {
 
       <div
         className="cart__item__remove"
-        onClick={() => dispatch({ type: "CART_REMOVE", payload: item })}
+        onClick={() => dispatch(remove(item))}
       >
         <i className="fa-regular fa-circle-xmark"></i>
       </div>

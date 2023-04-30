@@ -5,10 +5,16 @@ import { CartContext } from "../context/CartContext";
 import { cld } from "../utils/cloudinary";
 import { AdvancedImage, placeholder } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
+import { useDispatch, useSelector } from "react-redux";
+import { toggle } from "../redux/features/favortiesSlice";
+import { add, remove } from "../redux/features/cartSlice";
 
 const CardLg = ({ tat }) => {
-  const [favorites, dispatchF] = useContext(FavContext);
-  const [cart, dispatchC] = useContext(CartContext);
+  // const [favorites, dispatchF] = useContext(FavContext);
+  // const [cart, dispatchC] = useContext(CartContext);
+  const cart = useSelector((state) => state.cart);
+  const favorites = useSelector((state) => state.favorites);
+  const dispatch = useDispatch();
 
   const myImage = cld.image(tat.cid);
   myImage.resize(fill().width(1000).height(1000));
@@ -46,7 +52,7 @@ const CardLg = ({ tat }) => {
               className="card-lg__info__order__remove"
               onClick={(e) => {
                 e.stopPropagation();
-                dispatchC({ type: "CART_REMOVE", payload: tat });
+                dispatch(remove(tat));
               }}
             >
               <i className="fa-solid fa-cart-shopping"></i> Remove from Cart
@@ -56,7 +62,7 @@ const CardLg = ({ tat }) => {
               className="btn"
               onClick={(e) => {
                 e.stopPropagation();
-                dispatchC({ type: "CART_ADD", payload: tat });
+                dispatch(add(tat));
               }}
             >
               Order
@@ -73,10 +79,7 @@ const CardLg = ({ tat }) => {
           className="card-lg__fav"
           onClick={(e) => {
             e.stopPropagation();
-            dispatchF({
-              type: "TOGG_FAVORITE",
-              payload: { tat: tat.id },
-            });
+            dispatch(toggle(tat.id));
           }}
         >
           {favorites.find((f) => f.id === tat.id)?.favorited ? (

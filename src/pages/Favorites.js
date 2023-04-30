@@ -3,9 +3,12 @@ import React, { useContext, useState } from "react";
 import Canvas from "../components/Canvas";
 import { FavContext } from "../context/FavContext";
 import { TatContext } from "../context/TatContext";
+import { useSelector } from "react-redux";
 
 const Favorites = () => {
-  const [favorites, dispatchF] = useContext(FavContext);
+  // const [favorites, dispatchF] = useContext(FavContext);
+  const favorites = useSelector((state) => state.favorites);
+
   const [tats, dispatchT] = useContext(TatContext);
 
   // const [tats, setTats] = useState(
