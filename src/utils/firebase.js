@@ -10,7 +10,8 @@ import {
   where,
   setDoc,
   updateDoc,
-} from "firebase/firestore/lite";
+  onSnapshot,
+} from "firebase/firestore";
 
 import {
   getAuth,
@@ -29,12 +30,13 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+export const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+
 //Auth init
 export const auth = getAuth();
 
-const colRef = collection(db, "tats");
+export const colRef = collection(db, "tats");
 // Get all documents in a collectio
 
 //All
@@ -129,3 +131,11 @@ export async function editUser(editedUser) {
     console.error(error);
   }
 }
+
+// import { doc, onSnapshot } from "firebase/firestore";
+
+// const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {
+//     console.log("Current data: ", doc.data());
+// });
+
+// const unsubscribe = onSnapshot(collection(db, "tats"), () => console.log("change"));
