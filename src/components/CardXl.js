@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
 import { cld } from "../utils/cloudinary";
 
 import { AdvancedImage, placeholder } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
+import { useDispatch, useSelector } from "react-redux";
 
-const CardXl = ({ tat, dispatch, yours }) => {
-  const [yoursUp, yoursDown] = yours;
-  // console.log(tat);
-  const myImage = cld.image(tat.cid);
+import { down, up } from "../redux/features/voteSlice";
+import { editTat, fetchAllTats } from "../redux/features/tatsSlice";
+
+const CardXl = ({ tat, nextCard }) => {
+  const dispatch = useDispatch();
+
+  const myImage = cld.image(tat?.cid);
   myImage.resize(fill().width(100).height(100));
 
   return (
@@ -17,16 +20,15 @@ const CardXl = ({ tat, dispatch, yours }) => {
           cldImg={myImage}
           plugins={[placeholder({ mode: "predominant-color" })]}
         />
-        {/* <AdvancedImage cldImg={myImage} /> */}
-        {/* <img src={`./img/${tat.img}.jpg`} alt="" /> */}
       </div>
       <div className="card-xl__yesno">
         <div
           className="card-xl__no"
           onClick={() => {
-            yoursDown(tat.id);
-            dispatch({ type: "VOTE_DOWN", payload: { id: tat.id } });
-            // nextCard();
+            dispatch(down(tat.id));
+            dispatch(editTat({ editedTat: tat, vote: -1 }));
+            dispatch(fetchAllTats());
+            nextCard();
           }}
         >
           <i className="fa-regular fa-circle-xmark"></i>
@@ -34,14 +36,14 @@ const CardXl = ({ tat, dispatch, yours }) => {
         <div
           className="card-xl__yes"
           onClick={() => {
-            yoursUp(tat.id);
-            dispatch({ type: "VOTE_UP", payload: { id: tat.id } });
+            dispatch(up(tat.id));
+            dispatch(editTat({ editedTat: tat, vote: 1 }));
+            nextCard();
           }}
         >
           <i className="fa-regular fa-circle-check"></i>
         </div>
       </div>
-      {/* <h1>{tat.votes}</h1> */}
     </div>
   );
 };

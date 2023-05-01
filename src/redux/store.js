@@ -1,17 +1,8 @@
-import { configureStore, createListenerMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import favoritesReducer from "./features/favortiesSlice";
 import cartReducer from "./features/cartSlice";
 import tatsReducer from "./features/tatsSlice";
-
-// // Create the middleware instance and methods
-// const listenerMiddleware = createListenerMiddleware()
-
-// listenerMiddleware.startListening({
-//   actionCreator: listenFb,
-//   effect: async (action, listenerApi) => {
-
-//   },
-// })
+import voteReducer from "./features/voteSlice";
 
 //LocalStorage MIDDLEWARE
 const saveToLocalStorage = ({ getState }) => {
@@ -36,10 +27,9 @@ export const store = configureStore({
     favorites: favoritesReducer,
     cart: cartReducer,
     tats: tatsReducer,
+    vote: voteReducer,
   },
   preloadedState: { favorites: loadFromLocalStorage()?.favorites },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      // .prepend(listenerMiddleware.middleware)
-      .concat(saveToLocalStorage),
+    getDefaultMiddleware().concat(saveToLocalStorage),
 });
