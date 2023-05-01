@@ -1,6 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-
-import { FavContext } from "../context/FavContext";
+import React from "react";
 
 import { AdvancedImage, lazyload, placeholder } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
@@ -12,9 +10,8 @@ const CardSm = ({ tat, showModal, bg }) => {
   // Instantiate a CloudinaryImage object for the image
   const myImage = cld.image(tat.cid);
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
-  myImage.resize(fill().width(250).height(250));
+  myImage.resize(fill().width(300).height(300));
 
-  // const [favorites, dispatch] = useContext(FavContext);
   const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
 
@@ -25,11 +22,11 @@ const CardSm = ({ tat, showModal, bg }) => {
           cldImg={myImage}
           plugins={[lazyload(), placeholder({ mode: "predominant-color" })]}
         />
-        {/* <AdvancedImage cldImg={myImage} /> */}
-        {/* <img src={`./img/${tat.img}.jpg`} alt="" /> */}
-        <div className="card-sm__more" onClick={showModal}>
-          <i className="fa-solid fa-magnifying-glass-plus"></i>
-        </div>
+        {showModal && (
+          <div className="card-sm__more" onClick={showModal}>
+            <i className="fa-solid fa-magnifying-glass-plus"></i>
+          </div>
+        )}
       </div>
       <div className="card-sm__info">
         <h1>{tat.name}</h1>

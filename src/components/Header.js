@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const cart = useSelector((state) => state.cart);
   return (
     <div className="header">
       <nav className="navbar shadow-sm">
@@ -22,7 +24,11 @@ const Header = () => {
             <Link to="/book">Book Session</Link>
           </li>
         </ul>
-        <button className="btn btn__primary shadow-sm">Login</button>
+        <Link to="/book">
+          <button className="btn btn__primary shadow-sm">
+            Selected Tattoos {cart.length}
+          </button>
+        </Link>
       </nav>
     </div>
   );

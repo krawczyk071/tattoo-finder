@@ -41,7 +41,11 @@ const Vote = () => {
                 <div className="last5__card">
                   <CardSm
                     tat={tats.data.find((t) => t.id === y.id)}
-                    bg={y.votes > 0 ? "green" : "red"}
+                    bg={
+                      y.votes > 0
+                        ? "linear-gradient(to top, #fff 0%, #388e3c 80%)"
+                        : "linear-gradient(to top, #fff 0%, #c9182b 80%)"
+                    }
                   />
                 </div>
               );

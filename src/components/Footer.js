@@ -4,9 +4,13 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="footer__box">
-        <div className="footer__logo">Tattoo-finder</div>
-        <p>Szymon © 2023</p>
-        <p>Privacy Policy | Refund Policy</p>
+        <div className="footer__logo">
+          <div className="navbar__logo">
+            <span>Tattoo</span>finder
+          </div>
+        </div>
+        <p>Szymon Krawczyk © 2023</p>
+        <p>Images by dgim-studio and inksyndromeartwork on Freepik</p>
       </div>
     </div>
   );

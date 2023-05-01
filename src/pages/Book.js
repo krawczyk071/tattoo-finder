@@ -1,6 +1,5 @@
 import React from "react";
 
-import Person from "../components/Person";
 import Cart from "../components/Cart";
 
 const Book = () => {

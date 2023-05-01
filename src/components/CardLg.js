@@ -1,7 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import { formatPrice } from "../utils/helpers";
-import { FavContext } from "../context/FavContext";
-import { CartContext } from "../context/CartContext";
 import { cld } from "../utils/cloudinary";
 import { AdvancedImage, placeholder } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
@@ -10,23 +8,20 @@ import { toggle } from "../redux/features/favortiesSlice";
 import { add, remove } from "../redux/features/cartSlice";
 
 const CardLg = ({ tat }) => {
-  // const [favorites, dispatchF] = useContext(FavContext);
-  // const [cart, dispatchC] = useContext(CartContext);
   const cart = useSelector((state) => state.cart);
   const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
 
   const myImage = cld.image(tat.cid);
-  myImage.resize(fill().width(1000).height(1000));
+  myImage.resize(fill().width(750).height(750));
 
   return (
     <div className="card-lg">
       <div className="card-lg__photo">
         <AdvancedImage
           cldImg={myImage}
-          plugins={[placeholder({ mode: "predominant-color" })]}
+          plugins={[placeholder({ mode: "vectorize" })]}
         />
-        {/* <img src={`./img/${tat.img}.jpg`} alt="" /> */}
       </div>
       <div className="card-lg__info">
         <h1>{tat.name}</h1>

@@ -1,6 +1,4 @@
 import React from "react";
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
 import CartItem from "./CartItem";
 import { formatPrice } from "../utils/helpers";
 import { useState } from "react";
@@ -8,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { clear } from "../redux/features/cartSlice";
 
 const Cart = () => {
-  // const [cart, dispatch] = useContext(CartContext);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const [buttonText, setButtonText] = useState("Confirm");
@@ -16,7 +13,7 @@ const Cart = () => {
   function placeOrder() {
     setButtonText("Ordering...");
     setTimeout(() => {
-      console.log("Order placed!");
+      alert("Order placed!");
       setButtonText("Confirm");
       dispatch(clear());
     }, 3000);

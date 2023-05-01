@@ -2,7 +2,7 @@ import { cld } from "../utils/cloudinary";
 
 import { AdvancedImage, placeholder } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { down, up } from "../redux/features/voteSlice";
 import { editTat, fetchAllTats } from "../redux/features/tatsSlice";
@@ -11,7 +11,7 @@ const CardXl = ({ tat, nextCard }) => {
   const dispatch = useDispatch();
 
   const myImage = cld.image(tat?.cid);
-  myImage.resize(fill().width(100).height(100));
+  myImage.resize(fill().width(300).height(300));
 
   return (
     <div className="card-xl">
