@@ -34,7 +34,9 @@ const CardLg = ({ tat }) => {
           <h2>tags:</h2>
           <div className="card-lg__info__tags__cont">
             {tat.tags.split(",").map((t) => (
-              <span className="tag">{t}</span>
+              <span className="tag" key={t}>
+                {t}
+              </span>
             ))}
           </div>
         </div>

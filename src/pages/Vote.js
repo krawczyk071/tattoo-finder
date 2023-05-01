@@ -38,7 +38,7 @@ const Vote = () => {
             .reverse()
             .map((y) => {
               return (
-                <div className="last5__card">
+                <div className="last5__card" key={y.id}>
                   <CardSm
                     tat={tats.data.find((t) => t.id === y.id)}
                     bg={
