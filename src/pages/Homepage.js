@@ -9,9 +9,7 @@ const Homepage = () => {
   const tats = useSelector((state) => state.tats);
 
   return (
-    <section className="layout-lg">
-      {tats.loading ? <Loader /> : <Canvas tats={ArrShuffle(tats.data)} />}
-    </section>
+    <>{tats.loading ? <Loader /> : <Canvas tats={ArrShuffle(tats.data)} />}</>
   );
 };
 

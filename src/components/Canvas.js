@@ -20,7 +20,7 @@ const Canvas = ({ tats }) => {
   return (
     <>
       <Modal modal={modal} closer={closer} />
-      <div className="canvas">{tatCards}</div>
+      <div className="canvas layout-lg">{tatCards}</div>
     </>
   );
 };
