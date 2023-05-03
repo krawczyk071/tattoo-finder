@@ -15,11 +15,7 @@ const Favorites = () => {
     );
   }, [tats, favorites]);
 
-  return (
-    <section className="layout-lg">
-      <Canvas tats={favTats} />
-    </section>
-  );
+  return <Canvas tats={favTats} />;
 };
 
 export default Favorites;

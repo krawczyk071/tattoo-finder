@@ -1,37 +1,68 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { Logo } from "./styles/Logo.styled";
+import { StyledButton } from "./styles/Button.styled";
 
 const Header = () => {
   const cart = useSelector((state) => state.cart);
   return (
     <div className="header">
-      <nav className="navbar shadow-sm">
-        <div className="navbar__logo">
+      <NavbarMain>
+        <Logo>
           <span>Tattoo</span>finder
-        </div>
-        <ul className="navbar__list">
-          <li className="navbar__item">
+        </Logo>
+        <NavbarList>
+          <NavbarItem>
             <Link to="/">Home</Link>
-          </li>
-          <li className="navbar__item">
+          </NavbarItem>
+          <NavbarItem>
             <Link to="/favorites">Favorites</Link>
-          </li>
-          <li className="navbar__item">
+          </NavbarItem>
+          <NavbarItem>
             <Link to="/vote">Vote</Link>
-          </li>
-          <li className="navbar__item">
+          </NavbarItem>
+          <NavbarItem>
             <Link to="/book">Book Session</Link>
-          </li>
-        </ul>
+          </NavbarItem>
+        </NavbarList>
         <Link to="/book">
-          <button className="btn btn__primary shadow-sm">
-            Selected Tattoos {cart.length}
-          </button>
+          <StyledButton primary>Selected Tattoos {cart.length}</StyledButton>
         </Link>
-      </nav>
+      </NavbarMain>
     </div>
   );
 };
 
 export default Header;
+
+const NavbarMain = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 2rem;
+  background: rgba(245, 245, 245, 0.486);
+
+  box-shadow: 0 4px 0.5rem -0.125rem rgba(0, 0, 0, 0.1),
+    0 0.125rem 0.25rem -0.125rem rgba(0, 0, 0, 0.06);
+`;
+
+const NavbarList = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+`;
+
+const NavbarItem = styled.li`
+  display: inline;
+  margin: 1rem;
+  a {
+    color: var(--text1);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;

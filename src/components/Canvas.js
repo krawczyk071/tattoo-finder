@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CardSm from "./CardSm";
 import Modal from "./Modal";
+import styled from "styled-components";
 
 const Canvas = ({ tats }) => {
   const modalInit = { tat: {}, open: false };
@@ -20,9 +21,17 @@ const Canvas = ({ tats }) => {
   return (
     <>
       <Modal modal={modal} closer={closer} />
-      <div className="canvas layout-lg">{tatCards}</div>
+      <CanvasMain>{tatCards}</CanvasMain>
     </>
   );
 };
 
 export default Canvas;
+
+const CanvasMain = styled.div`
+  margin: 1.5rem auto;
+  width: 960px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+`;

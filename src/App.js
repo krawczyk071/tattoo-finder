@@ -6,10 +6,12 @@ import Book from "./pages/Book";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Favorites from "./pages/Favorites";
+import { GlobalStyle } from "./components/styles/Global";
 
 function App() {
   return (
     <Router>
+      <GlobalStyle />
       <Header />
       <div className="container">
         <Routes>
