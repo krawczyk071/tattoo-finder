@@ -104,8 +104,8 @@ const Last5Card = styled.div`
   transform: scale(0.7);
   margin: -30px;
 `;
-const VoteCards = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 80%;
-`;
+// const VoteCards = styled.div`
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   width: 80%;
+// `;
