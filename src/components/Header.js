@@ -41,18 +41,25 @@ const NavbarMain = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  min-height: 70px;
   padding: 0 2rem;
   background: rgba(245, 245, 245, 0.486);
 
   box-shadow: 0 4px 0.5rem -0.125rem rgba(0, 0, 0, 0.1),
     0 0.125rem 0.25rem -0.125rem rgba(0, 0, 0, 0.06);
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    padding-bottom: 1rem;
+  }
 `;
 
 const NavbarList = styled.ul`
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  @media (max-width: 576px) {
+    padding: 0 0 1rem 0;
+  }
 `;
 
 const NavbarItem = styled.li`
@@ -64,5 +71,8 @@ const NavbarItem = styled.li`
     &:hover {
       text-decoration: underline;
     }
+  }
+  @media (max-width: 576px) {
+    margin: 0.4rem;
   }
 `;

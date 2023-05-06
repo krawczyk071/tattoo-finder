@@ -63,6 +63,7 @@ const CardSmMain = styled.div`
   border-radius: var(--radius1);
   box-shadow: 0 4px 0.5rem -0.125rem rgba(0, 0, 0, 0.1),
     0 0.125rem 0.25rem -0.125rem rgba(0, 0, 0, 0.06);
+  margin-inline: 0.5rem;
 `;
 const CardSmWrap = styled.div`
   flex: 1 0 268px;

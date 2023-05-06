@@ -98,6 +98,9 @@ const Last5 = styled.div`
 
 const Last5Cards = styled.div`
   display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const Last5Card = styled.div`

@@ -31,7 +31,27 @@ const ModalMain = styled.div`
 `;
 const AspectRatio = styled.div`
   position: relative;
-  height: 80%;
+  /* height: 80%;
   padding-left: 55%;
-  width: 0;
+  width: 0; */
+
+  width: 60%;
+  height: 0;
+  padding-bottom: calc(60% * 3 / 4.3);
+
+  @media (max-width: 1200px) {
+    width: 40%;
+    height: 0;
+    padding-bottom: calc(40% * 4 / 2.5);
+  }
+  @media (max-width: 900px) {
+    width: 60%;
+    height: 0;
+    padding-bottom: calc(60% * 4 / 2.5);
+  }
+  @media (max-width: 600px) {
+    width: 80%;
+    height: 0;
+    padding-bottom: calc(80% * 4 / 2.5);
+  }
 `;

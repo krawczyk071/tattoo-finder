@@ -33,7 +33,7 @@ const BookMain = styled.div`
   }
 `;
 const BookImg = styled.div`
-  width: 400px;
+  max-width: 400px;
   img {
     height: 100%;
     display: block;

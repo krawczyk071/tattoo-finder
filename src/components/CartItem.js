@@ -17,7 +17,7 @@ const CartItem = ({ item, dispatch }) => {
           plugins={[placeholder({ mode: "predominant-color" })]}
         />
       </CartItemPhoto>
-      <h2>{item.name}</h2>
+      <CartItemTitle>{item.name}</CartItemTitle>
       <h2>{formatPrice(item.price)}</h2>
 
       <CartItemRemove onClick={() => dispatch(remove(item))}>
@@ -30,14 +30,14 @@ const CartItem = ({ item, dispatch }) => {
 export default CartItem;
 
 const CartItemMain = styled.div`
-  width: 50%;
+  width: clamp(350px, 50%, 50%);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem;
   background: rgb(230, 230, 230);
   h2 {
-    flex: 1 1 30%;
+    flex: 1 1 20%;
     padding: 1rem;
   }
 `;
@@ -49,4 +49,11 @@ const CartItemRemove = styled.div`
 const CartItemPhoto = styled.div`
   flex: 0 0 100px;
   width: 100px;
+`;
+const CartItemTitle = styled.div`
+  flex: 1 1 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-left: 1rem;
 `;

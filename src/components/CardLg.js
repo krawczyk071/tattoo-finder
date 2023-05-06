@@ -94,25 +94,40 @@ const CardLgMain = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  align-content: center;
   background: var(--secondary);
   padding: 1rem;
   border-radius: var(--radius1);
 
-  img {
-    object-fit: cover;
-    width: 100%;
-    height: auto;
-    display: block;
-  }
   h1 {
     font-size: 1.5rem;
     font-weight: bold;
   }
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    h1 {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    h2 {
+      font-size: 0.9rem;
+    }
+  }
 `;
 const CardLgPhoto = styled.div`
-  flex: 1 1 70%;
+  flex: 1 0 70%;
   background: silver;
   overflow: hidden;
+  img {
+    /* object-fit: cover; */
+    width: 100%;
+    /* height: auto; */
+    display: block;
+  }
+  @media (max-width: 1200px) {
+    flex: 1 0 50%;
+  }
 `;
 
 const CardLgInfo = styled.div`
@@ -121,6 +136,9 @@ const CardLgInfo = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 1rem;
+  @media (max-width: 1200px) {
+    flex: 1 0 50%;
+  }
 `;
 const CardLgInfoBtn = styled(StyledButton)`
   align-self: center;
@@ -173,6 +191,9 @@ const Never = styled.div`
   text-align: center;
   i {
     font-size: 2rem;
+  }
+  @media (max-width: 1200px) {
+    display: none;
   }
 `;
 
