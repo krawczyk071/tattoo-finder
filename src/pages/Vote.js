@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { saveIdx } from "../redux/features/voteSlice";
 import styled from "styled-components";
 import Loader from "../components/Loader";
+import Alert from "../components/Alert";
 
 const Vote = () => {
   const tats = useSelector((state) => state.tats);
@@ -26,6 +27,8 @@ const Vote = () => {
 
   return tats.loading ? (
     <Loader />
+  ) : tats.error ? (
+    <Alert />
   ) : (
     <VoteMain>
       <VoteCard>

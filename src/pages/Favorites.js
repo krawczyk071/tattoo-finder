@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Canvas from "../components/Canvas";
 import { useSelector } from "react-redux";
 import Loader from "../components/Loader";
+import Alert from "../components/Alert";
 
 const Favorites = () => {
   const favorites = useSelector((state) => state.favorites);
@@ -18,7 +19,17 @@ const Favorites = () => {
       );
   }, [tats, favorites]);
 
-  return <>{tats.loading ? <Loader /> : <Canvas tats={favTats} />}</>;
+  return (
+    <>
+      {tats.loading ? (
+        <Loader />
+      ) : tats.error ? (
+        <Alert />
+      ) : (
+        <Canvas tats={favTats} />
+      )}
+    </>
+  );
 };
 
 export default Favorites;

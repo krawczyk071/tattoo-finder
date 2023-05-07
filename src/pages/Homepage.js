@@ -5,6 +5,7 @@ import Canvas from "../components/Canvas";
 import { ArrShuffle } from "../utils/helpers";
 import Loader from "../components/Loader";
 import { useSelector } from "react-redux";
+import Alert from "../components/Alert";
 const Homepage = () => {
   const tats = useSelector((state) => state.tats);
 
@@ -19,7 +20,15 @@ const Homepage = () => {
   // });
 
   return (
-    <>{tats.loading ? <Loader /> : <Canvas tats={ArrShuffle(tats.data)} />}</>
+    <>
+      {tats.loading ? (
+        <Loader />
+      ) : tats.error ? (
+        <Alert />
+      ) : (
+        <Canvas tats={ArrShuffle(tats.data)} />
+      )}
+    </>
   );
 };
 
