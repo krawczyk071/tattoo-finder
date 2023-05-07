@@ -15,8 +15,11 @@ const CardSm = ({ tat, showModal, bg }) => {
   const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
 
+  // console.log("mcardsm");
+
   return (
     <CardSmMain style={{ background: bg }}>
+      {/* {console.log("rcardsm")} */}
       <CardSmWrap>
         <CardSmImg
           cldImg={myImage}

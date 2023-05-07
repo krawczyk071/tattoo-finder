@@ -18,8 +18,10 @@ const Canvas = ({ tats }) => {
   const tatCards = tats.map((tat) => (
     <CardSm key={tat.id} tat={tat} showModal={() => showModal(tat)} />
   ));
+  // console.log("mCanvas");
   return (
     <>
+      {/* {console.log("rCanvas")} */}
       <Modal modal={modal} closer={closer} />
       <CanvasMain>{tatCards}</CanvasMain>
     </>

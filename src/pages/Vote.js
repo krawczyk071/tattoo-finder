@@ -5,6 +5,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useDispatch, useSelector } from "react-redux";
 import { saveIdx } from "../redux/features/voteSlice";
 import styled from "styled-components";
+import Loader from "../components/Loader";
 
 const Vote = () => {
   const tats = useSelector((state) => state.tats);
@@ -18,11 +19,14 @@ const Vote = () => {
       return prev === tats.data.length - 1 ? 0 : prev + 1;
     });
   }
+
   useEffect(() => {
     dispatch(saveIdx(cardIdx));
   }, [dispatch, cardIdx]);
 
-  return (
+  return tats.loading ? (
+    <Loader />
+  ) : (
     <VoteMain>
       <VoteCard>
         <TransitionGroup className="trans-group">
