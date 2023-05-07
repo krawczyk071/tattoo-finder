@@ -30,7 +30,7 @@ const Cart = () => {
   ) : (
     <CartMain>
       {cart.map((c) => (
-        <CartItem item={c} dispatch={dispatch} />
+        <CartItem key={c.id} item={c} dispatch={dispatch} />
       ))}
       <h1>TOTAL:</h1>
       <h2>{formatPrice(total)}</h2>

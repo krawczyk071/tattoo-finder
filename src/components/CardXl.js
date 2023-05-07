@@ -27,7 +27,7 @@ const CardXl = ({ tat, nextCard }) => {
           onClick={() => {
             dispatch(down(tat.id));
             dispatch(editTat({ editedTat: tat, vote: -1 }));
-            dispatch(fetchAllTats());
+            // dispatch(fetchAllTats());
             nextCard();
           }}
         >
@@ -37,6 +37,7 @@ const CardXl = ({ tat, nextCard }) => {
           onClick={() => {
             dispatch(up(tat.id));
             dispatch(editTat({ editedTat: tat, vote: 1 }));
+            // dispatch(fetchAllTats());
             nextCard();
           }}
         >
