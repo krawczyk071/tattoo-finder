@@ -5,7 +5,7 @@ import { fill } from "@cloudinary/url-gen/actions/resize";
 import { useDispatch } from "react-redux";
 
 import { down, up } from "../redux/features/voteSlice";
-import { editTat, fetchAllTats } from "../redux/features/tatsSlice";
+import { editTat } from "../redux/features/tatsSlice";
 import styled from "styled-components";
 
 const CardXl = ({ tat, nextCard }) => {
