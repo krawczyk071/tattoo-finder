@@ -7,6 +7,7 @@ import { saveIdx } from "../redux/features/voteSlice";
 import styled from "styled-components";
 import Loader from "../components/Loader";
 import Alert from "../components/Alert";
+import { fetchAllTats } from "../redux/features/tatsSlice";
 
 const Vote = () => {
   const tats = useSelector((state) => state.tats);
@@ -24,6 +25,18 @@ const Vote = () => {
   useEffect(() => {
     dispatch(saveIdx(cardIdx));
   }, [dispatch, cardIdx]);
+
+  //Update state after voting finished
+  useEffect(() => {
+    return () => {
+      console.log("updating");
+      dispatch(fetchAllTats());
+    };
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log("rerender");
+  }, []);
 
   return tats.loading ? (
     <Loader />
@@ -48,6 +61,7 @@ const Vote = () => {
               return (
                 <Last5Card key={y.id}>
                   <SmallerCard
+                    key={y.id}
                     tat={tats.data.find((t) => t.id === y.id)}
                     bg={
                       y.votes > 0

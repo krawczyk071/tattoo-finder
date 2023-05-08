@@ -8,6 +8,7 @@ import {
   getDoc,
   query,
   where,
+  onSnapshot,
 } from "firebase/firestore";
 
 import { getAuth } from "firebase/auth";
@@ -71,3 +72,11 @@ export async function getSelected() {
 // });
 
 // const unsubscribe = onSnapshot(collection(db, "tats"), () => console.log("change"));
+export async function listenFire() {
+  const querySnapshot = await onSnapshot(colRef);
+  const dataArr = querySnapshot.docs.map((doc) => ({
+    ...doc.data(),
+    id: doc.id,
+  }));
+  return dataArr;
+}

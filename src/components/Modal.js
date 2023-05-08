@@ -1,12 +1,12 @@
 import React from "react";
-import CardLg from "./CardLg";
+import CardModal from "./CardModal";
 import styled from "styled-components";
 
 const Modal = ({ modal, closer }) => {
   return modal.open ? (
     <ModalMain onClick={closer}>
       <AspectRatio>
-        <CardLg tat={modal.tat} />
+        <CardModal tat={modal.tat} />
       </AspectRatio>
     </ModalMain>
   ) : (

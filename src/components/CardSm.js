@@ -2,18 +2,14 @@ import React from "react";
 import { AdvancedImage, lazyload, placeholder } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { cld } from "../utils/cloudinary";
-import { useDispatch, useSelector } from "react-redux";
-import { toggle } from "../redux/features/favortiesSlice";
 import styled from "styled-components";
+import Like from "./Like";
 
 const CardSm = ({ tat, showModal, bg }) => {
   // Instantiate a CloudinaryImage object for the image
   const myImage = cld.image(tat.cid);
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
   myImage.resize(fill().width(300).height(300));
-
-  const favorites = useSelector((state) => state.favorites);
-  const dispatch = useDispatch();
 
   // console.log("mcardsm");
 
@@ -33,13 +29,9 @@ const CardSm = ({ tat, showModal, bg }) => {
       </CardSmWrap>
       <CardSmInfo>
         <h1>{tat.name}</h1>
-        <h2>Votes: {tat.votes}</h2>
-        <CardSmFav onClick={() => dispatch(toggle(tat.id))}>
-          {favorites.find((f) => f.id === tat.id)?.favorited ? (
-            <i className="fa-solid fa-heart"></i>
-          ) : (
-            <i className="fa-regular fa-heart"></i>
-          )}
+        {!bg && <h2>Votes: {tat.votes}</h2>}
+        <CardSmFav>
+          <Like tatId={tat.id} />
         </CardSmFav>
       </CardSmInfo>
     </CardSmMain>
@@ -87,14 +79,15 @@ const CardSmMore = styled.div`
     justify-content: center;
   }
 `;
+
+const CardSmImg = styled(AdvancedImage)`
+  width: 100%;
+  display: block;
+  grid-area: 1/1;
+`;
 const CardSmFav = styled.div`
   grid-area: 1/2 / span 2/2;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-`;
-const CardSmImg = styled(AdvancedImage)`
-  width: 100%;
-  display: block;
-  grid-area: 1/1;
 `;
