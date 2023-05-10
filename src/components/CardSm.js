@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { AdvancedImage, lazyload, placeholder } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { cld } from "../utils/cloudinary";
 import styled from "styled-components";
 import Like from "./Like";
+import Modal from "./Modal";
 
-const CardSm = ({ tat, showModal, bg }) => {
+const CardSm = ({ tat, bg }) => {
+  const modalInit = { tat: {}, open: false };
+  const [modal, setModal] = useState(modalInit);
+
+  function closer() {
+    setModal(modalInit);
+  }
+
+  function showModal(tat) {
+    setModal({ tat, open: true });
+  }
+
   // Instantiate a CloudinaryImage object for the image
   const myImage = cld.image(tat.cid);
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
@@ -22,7 +34,7 @@ const CardSm = ({ tat, showModal, bg }) => {
           plugins={[lazyload(), placeholder({ mode: "predominant-color" })]}
         />
         {showModal && (
-          <CardSmMore onClick={showModal}>
+          <CardSmMore onClick={() => showModal(tat)}>
             <i className="fa-solid fa-magnifying-glass-plus"></i>
           </CardSmMore>
         )}
@@ -34,6 +46,8 @@ const CardSm = ({ tat, showModal, bg }) => {
           <Like tatId={tat.id} />
         </CardSmFav>
       </CardSmInfo>
+
+      <Modal modal={modal} closer={closer} />
     </CardSmMain>
   );
 };

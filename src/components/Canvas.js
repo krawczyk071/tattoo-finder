@@ -4,25 +4,11 @@ import Modal from "./Modal";
 import styled from "styled-components";
 
 const Canvas = ({ tats }) => {
-  const modalInit = { tat: {}, open: false };
-  const [modal, setModal] = useState(modalInit);
-
-  function closer() {
-    setModal(modalInit);
-  }
-
-  function showModal(tat) {
-    setModal({ tat, open: true });
-  }
-
-  const tatCards = tats.map((tat) => (
-    <CardSm key={tat.id} tat={tat} showModal={() => showModal(tat)} />
-  ));
+  const tatCards = tats.map((tat) => <CardSm key={tat.id} tat={tat} />);
   // console.log("mCanvas");
   return (
     <>
       {/* {console.log("rCanvas")} */}
-      <Modal modal={modal} closer={closer} />
       <CanvasMain>{tatCards}</CanvasMain>
     </>
   );
