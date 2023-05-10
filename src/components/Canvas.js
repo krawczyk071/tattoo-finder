@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import CardSm from "./CardSm";
-import Modal from "./Modal";
 import styled from "styled-components";
 
+const CardSmMemo = React.memo(CardSm);
 const Canvas = ({ tats }) => {
-  const tatCards = tats.map((tat) => <CardSm key={tat.id} tat={tat} />);
+  const tatCards = tats.map((tat) => <CardSmMemo key={tat.id} tat={tat} />);
   // console.log("mCanvas");
   return (
     <>

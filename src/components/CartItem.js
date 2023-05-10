@@ -49,6 +49,7 @@ const CartItemRemove = styled.div`
 const CartItemPhoto = styled.div`
   flex: 0 0 100px;
   width: 100px;
+  height: 100px;
 `;
 const CartItemTitle = styled.div`
   flex: 1 1 70%;

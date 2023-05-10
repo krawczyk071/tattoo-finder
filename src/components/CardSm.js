@@ -33,7 +33,7 @@ const CardSm = ({ tat, bg }) => {
           cldImg={myImage}
           plugins={[lazyload(), placeholder({ mode: "predominant-color" })]}
         />
-        {showModal && (
+        {!bg && (
           <CardSmMore onClick={() => showModal(tat)}>
             <i className="fa-solid fa-magnifying-glass-plus"></i>
           </CardSmMore>

@@ -99,7 +99,9 @@ const VoteCard = styled.div`
 //   flex-direction: column;
 //   align-items: center;
 // `;
-const SmallerCard = styled(CardSm)`
+const CardSmMemo = React.memo(CardSm);
+
+const SmallerCard = styled(CardSmMemo)`
   transform: scale(0.7);
 `;
 
